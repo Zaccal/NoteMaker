@@ -1,0 +1,90 @@
+@import url('/src/css/markdownTheme/MarkDownTheme.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    span {
+        color: var(--text);
+    }
+
+    html {
+        height: 100%;
+    }
+
+    #root {
+        height: 100%;
+    }
+
+    *:focus {
+        outline: none;
+    }
+
+    :root {
+        --text: #140817;
+        --background: #f8f0fa;
+        --backgroundPrimary: #c0c0c0;
+        --backgroundAccent: #333333;
+        --primary: #a1da95;
+        --secondary: #ceeed9;
+        --accent: #8bb13e;
+    }
+    .dark {
+        --text: #f4e8f7;
+        --background: #383838;
+        --backgroundPrimary: #282828;
+        --backgroundAccent: #333333;
+        --primary: #316a25;
+        --secondary: #11311c;
+        --accent: #9ac14e;
+    }
+
+    svg {
+        color: var(--text);
+    }
+
+    input {
+        @apply !text-text;
+    }
+}
+
+@layer components {
+    .layout_children {
+        height: 100%;
+    }
+
+    .layout_children > div {
+        height: 100%;
+    }
+
+    .icon-button_hover:hover > svg {
+        @apply text-accent transition-colors;
+    }
+
+    .modal_container {
+        @apply bg-backgroundPrimary rounded-sm w-full h-full max-h-[600px] max-w-[800px];
+    }
+
+    .Select > div {
+        @apply !pt-1;
+    }
+
+    .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+        @apply !bg-background;
+    }
+
+    .SpanMute span {
+        @apply text-[#808080];
+    }
+
+    .CheckBoxChecked svg {
+        @apply text-accent;
+    }
+}

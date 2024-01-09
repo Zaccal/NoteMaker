@@ -10,6 +10,7 @@ import { MouseEventHandler, useState } from 'react'
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded'
 import useActions from '../../hook/useActions'
 import DiologEnsureToDelete from '../Viewer/NoteBarTool/DiologEnsureToDelete/DiologEnsureToDelete'
+import useTypedSelector from '../../hook/useTypedSelector'
 
 interface IToDoTask {
     checked: boolean
@@ -19,13 +20,22 @@ interface IToDoTask {
 }
 
 const ToDoTask = ({ checked, title, onChange, id }: IToDoTask) => {
+    const { SettingsReducer } = useTypedSelector(state => state)
     const { removeToDoTask } = useActions()
     const [isOpen, setIsOpen] = useState(false)
+
+    const handleToDeleteDiolog = () => {
+        if (!SettingsReducer.isAlwaysOpenEnsureDiolog) {
+            setIsOpen(true)
+        } else {
+            removeToDoTask(id)
+        }
+    }
 
     return (
         <ListItem
             secondaryAction={
-                <IconButton onClick={() => setIsOpen(true)}>
+                <IconButton onClick={handleToDeleteDiolog}>
                     <DeleteRoundedIcon className="hover:text-accent transition-colors" />
                 </IconButton>
             }
@@ -49,8 +59,10 @@ const ToDoTask = ({ checked, title, onChange, id }: IToDoTask) => {
                 />
             </ListItemButton>
             <DiologEnsureToDelete
+                onAgree={() => removeToDoTask(id)}
                 isOpen={isOpen}
-                noteName={title}
+                nameObjectToDelete={title}
+                typeObjectToDelete="task"
                 setIsOpen={setIsOpen}
             />
         </ListItem>

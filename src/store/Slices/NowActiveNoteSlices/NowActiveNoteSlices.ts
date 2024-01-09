@@ -8,20 +8,16 @@ const emptyNote: INote = {
     timeCreated: '',
 }
 
-interface IRootLocalStorage {
-    NoteReducer: string
-}
-
 const initialState: INote = emptyNote
 
 const NowActiveNoteSlices = createSlice({
     name: 'NowActiveNoteSlices',
     initialState,
     reducers: {
-        toggle: (state, action: PayloadAction<INote>) => {
+        toggle: (_, action: PayloadAction<INote>) => {
             return action.payload
         },
-        clear: state => {
+        clear: () => {
             return emptyNote
         },
     },

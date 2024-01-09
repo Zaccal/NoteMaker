@@ -1,3 +1,4 @@
+import { TypeSearchPleace } from '../hook/useSearch'
 import { CodeLanguage, TypeFormats } from '../types/types'
 
 export const lengthSentence = (sentence: string, length: number): string => {
@@ -99,4 +100,28 @@ export const formatText = (
                 return formatTextSymbols(text, '***')
         }
     }
+}
+
+export const getTypeSearchPlaceByLinkValue = (
+    linkValue: string
+): TypeSearchPleace => {
+    switch (linkValue.substring(1)) {
+        case '':
+            return 'note'
+        case 'todos':
+            return 'tasks'
+        case 'trash':
+            return 'trash'
+        default:
+            return 'no_one'
+    }
+}
+
+export const getFormateTime = (time: string) => {
+    return time
+        .split(':')
+        .map(timeNumber =>
+            Number(timeNumber) < 10 ? `0${timeNumber}` : timeNumber
+        )
+        .join(':')
 }

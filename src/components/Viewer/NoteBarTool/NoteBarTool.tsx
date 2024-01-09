@@ -22,19 +22,20 @@ const NoteBarTool = ({
     title,
     idNote,
 }: INoteBarTool) => {
-    const { remove, clear } = useActions()
+    const { remove, clear, shiftToTrash } = useActions()
     const [isOpenDiolog, setIsOpenDiolog] = useState(false)
     const { nowActiveNoteReducer, SettingsReducer } = useTypedSelector(
         state => state
     )
 
     const removeNoteHandler = () => {
+        shiftToTrash(nowActiveNoteReducer)
         remove(idNote)
         clear()
     }
 
     const handlerClickDeleteIcon = () => {
-        if (SettingsReducer.isAlwaysOpenEnsureDiologToDeleteNote) {
+        if (!SettingsReducer.isAlwaysOpenEnsureDiolog) {
             setIsOpenDiolog(true)
         } else {
             removeNoteHandler()
@@ -42,7 +43,15 @@ const NoteBarTool = ({
     }
 
     return (
-        <div className="bg-backgroundAccent flex items-center border-b border-backgroundPrimary z-20 px-4 py-3">
+        <div
+            style={{
+                background:
+                    SettingsReducer.theme === 'dark'
+                        ? 'var(--backgroundAccent)'
+                        : 'var(--lt-color-background-dark)',
+            }}
+            className="flex items-center border-b border-backgroundPrimary z-20 px-4 py-3"
+        >
             <IconButton
                 onClick={() => setIsEditMode(prev => !prev)}
                 className="icon-button_hover !rounded-sm"
@@ -59,7 +68,7 @@ const NoteBarTool = ({
             <DiologEnsureToDelete
                 isOpen={isOpenDiolog}
                 setIsOpen={setIsOpenDiolog}
-                noteName={nowActiveNoteReducer.name}
+                nameObjectToDelete={nowActiveNoteReducer.name}
                 onAgree={removeNoteHandler}
             />
         </div>

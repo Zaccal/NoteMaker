@@ -1,3 +1,4 @@
 export interface ISettings {
-    isAlwaysOpenEnsureDiologToDeleteNote: boolean
+    isAlwaysOpenEnsureDiolog: boolean
+    theme: 'dark' | 'light'
 }

@@ -31,7 +31,7 @@ const Sidebar = () => {
             <IconButton
                 onClick={() => setIsOpenBurger(!isOpenBurger)}
                 aria-label="Burger open"
-                className="w-full h-[64px] md:h-[81px] !rounded-none"
+                className="w-full h-[64px] md:h-[81px] hover:!bg-backgroundPrimary !rounded-none"
             >
                 {isOpenBurger ? (
                     <CloseRoundedIcon
@@ -46,7 +46,7 @@ const Sidebar = () => {
                 height={window.innerHeight - 51}
                 className={`${rootContainer.join(
                     ' '
-                )} w-full transition-all justify-center z-20 left-0 bg-backgroundPrimary absolute top-full`}
+                )} w-full transition-all justify-center z-20 left-0 dark:bg-backgroundPrimary !bg-backgroundPrimary absolute top-full`}
             >
                 {links.map(itemData => (
                     <SidebarItem

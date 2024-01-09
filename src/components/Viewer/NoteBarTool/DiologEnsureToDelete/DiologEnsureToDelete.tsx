@@ -8,20 +8,23 @@ import {
     FormControlLabel,
 } from '@mui/material'
 import { TypeSetState } from '../../../../types/types'
-import { useState } from 'react'
 import useTypedSelector from '../../../../hook/useTypedSelector'
 import useActions from '../../../../hook/useActions'
 
+type TypeObjectToDelete = 'note' | 'task'
+
 interface IDiologEnsureToDelete {
-    noteName: string
+    nameObjectToDelete: string
     isOpen: boolean
     setIsOpen: TypeSetState<boolean>
     onAgree?: () => void
     onDisagree?: () => void
+    typeObjectToDelete?: TypeObjectToDelete
 }
 
 const DiologEnsureToDelete = ({
-    noteName,
+    nameObjectToDelete,
+    typeObjectToDelete = 'note',
     isOpen,
     setIsOpen,
     onAgree,
@@ -29,15 +32,10 @@ const DiologEnsureToDelete = ({
 }: IDiologEnsureToDelete) => {
     const { SettingsReducer } = useTypedSelector(state => state)
     const { editSettings } = useActions()
-    const [isAskDiolog, setIsAskDiolog] = useState(
-        SettingsReducer.isAlwaysOpenEnsureDiologToDeleteNote
-    )
+
     const handleClose = (agree: boolean) => {
         setIsOpen(false)
         if (onAgree && agree) {
-            editSettings({
-                isAlwaysOpenEnsureDiologToDeleteNote: isAskDiolog,
-            })
             onAgree()
         } else if (onDisagree && !agree) {
             onDisagree()
@@ -52,11 +50,11 @@ const DiologEnsureToDelete = ({
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
                 classes={{
-                    paper: '!bg-backgroundAccent',
+                    paper: 'dark:!bg-backgroundAccent !bg-background',
                 }}
             >
                 <DialogTitle id="alert-dialog-title">
-                    {`Are you sure to delete "${noteName}" note?`}
+                    {`Are you sure to delete "${nameObjectToDelete}" ${typeObjectToDelete}?`}
                 </DialogTitle>
                 <DialogContent>
                     <FormControlLabel
@@ -64,18 +62,36 @@ const DiologEnsureToDelete = ({
                         control={
                             <Checkbox
                                 className={
-                                    isAskDiolog ? 'CheckBoxChecked' : undefined
+                                    SettingsReducer.isAlwaysOpenEnsureDiolog
+                                        ? 'CheckBoxChecked'
+                                        : undefined
                                 }
-                                checked={!isAskDiolog}
-                                onChange={() => setIsAskDiolog(prev => !prev)}
+                                checked={
+                                    SettingsReducer.isAlwaysOpenEnsureDiolog
+                                }
+                                onChange={() =>
+                                    editSettings({
+                                        isAlwaysOpenEnsureDiolog:
+                                            !SettingsReducer.isAlwaysOpenEnsureDiolog,
+                                    })
+                                }
                             />
                         }
                         label={"Don't ask anymore"}
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={() => handleClose(false)}>Disagree</Button>
-                    <Button onClick={() => handleClose(true)} autoFocus>
+                    <Button
+                        className="!text-green-500"
+                        onClick={() => handleClose(false)}
+                    >
+                        Disagree
+                    </Button>
+                    <Button
+                        className="!text-red-500"
+                        onClick={() => handleClose(true)}
+                        autoFocus
+                    >
                         Agree
                     </Button>
                 </DialogActions>

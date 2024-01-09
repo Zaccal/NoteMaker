@@ -4,7 +4,14 @@ import Search from './Search/Search'
 
 const Header = () => {
     return (
-        <AppBar position="relative" className="!bg-backgroundPrimary z-10">
+        <AppBar
+            position="relative"
+            sx={{
+                backgroundColor: 'var(--backgroundPrimary)',
+                backgroundImage: 'none',
+            }}
+            className="z-10"
+        >
             <Toolbar variant="regular" className="!px-0">
                 <Sidebar />
                 <Search />

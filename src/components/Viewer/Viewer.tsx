@@ -30,7 +30,6 @@ const Viewer = ({ children }: IViewer) => {
             edit({
                 id: nowActiveNoteReducer?.id,
                 content: {
-                    ...nowActiveNoteReducer,
                     content: value,
                 },
             })
@@ -74,7 +73,7 @@ const Viewer = ({ children }: IViewer) => {
                                     remarkGfm,
                                     rehypeRaw,
                                 ]}
-                                className="px-8 py-4 markdown bg-backgroundPrimary h-full"
+                                className="bg-backgroundPrimary px-8 py-4 markdown h-full"
                             >
                                 {markdownValue || '### Nothing wrote yet'}
                             </Markdown>

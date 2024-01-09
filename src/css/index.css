@@ -69,7 +69,7 @@
     }
 
     .modal_container {
-        @apply bg-backgroundPrimary rounded-sm w-full h-full max-h-[600px] max-w-[800px];
+        @apply dark:bg-backgroundPrimary !bg-background rounded-sm w-full h-full max-h-[600px] max-w-[800px];
     }
 
     .Select > div {
@@ -86,5 +86,9 @@
 
     .CheckBoxChecked svg {
         @apply text-accent;
+    }
+
+    .Settings_container_options div:not(:last-child) {
+        @apply border-b dark:border-white;
     }
 }

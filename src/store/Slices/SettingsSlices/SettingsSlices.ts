@@ -2,7 +2,8 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { ISettings } from '../../../interfaces/SettingsInterface'
 
 const initialState: ISettings = {
-    isAlwaysOpenEnsureDiologToDeleteNote: true,
+    isAlwaysOpenEnsureDiolog: false,
+    theme: 'dark',
 }
 
 const SettingsSlices = createSlice({
@@ -11,7 +12,6 @@ const SettingsSlices = createSlice({
     reducers: {
         editSettings: (state, action: PayloadAction<Partial<ISettings>>) => {
             const newData = action.payload
-
             return {
                 ...state,
                 ...newData,

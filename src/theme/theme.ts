@@ -29,7 +29,7 @@ type Palette = {
 // Dark mode palette
 const darkModePalette = {
     primary: {
-        main: '#316a25',
+        main: '#9ac14e',
         textContrast: '#f4e8f7',
     },
     secondary: {
@@ -52,7 +52,7 @@ const darkModePalette = {
 // Light mode palette
 const lightModePalette = {
     primary: {
-        main: '#a1da95',
+        main: '#9ac14e',
         textContrast: '#140817',
     },
     secondary: {

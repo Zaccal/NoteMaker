@@ -1,21 +1,13 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { INote } from '../../../interfaces/NoteInterface'
+import { initialNote } from './InititalNote'
 
 interface INoteEditData {
     id: number
     content: Partial<INote>
 }
 
-const date = new Date()
-
-const initialState: INote[] = [
-    {
-        id: 0,
-        name: 'Instruction',
-        timeCreated: `${date.getHours()}:${date.getMinutes()}`,
-        content: '# ***Hello World***',
-    },
-]
+const initialState: INote[] = [initialNote]
 
 const NoteSlice = createSlice({
     name: 'NoteSlice',

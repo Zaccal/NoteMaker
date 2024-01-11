@@ -1,27 +1,56 @@
-# React + TypeScript + Vite
+# NoteMaker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the NoteMaker App, a simple yet powerful project built with React, Vite, Tailwind CSS, and Material-UI (MUI). This application allows you to create and edit Markdown documents with ease, providing a seamless and intuitive user experience.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   **Markdown Editing:** Write and edit your Markdown content effortlessly in a clean and user-friendly interface.
+-   **Live Preview:** Instantly see how your Markdown will be rendered with the live preview feature, making it easier to format and structure your content.
 
-## Expanding the ESLint configuration
+-   **Syntax Highlighting:** Enjoy syntax highlighting for code blocks, enhancing the readability of your code snippets.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+-   **Customization with Tailwind CSS:** The user interface is designed with Tailwind CSS, allowing for easy customization and flexibility in styling.
 
-- Configure the top-level `parserOptions` property like this:
+-   **Material-UI Components:** Leveraging the Material-UI library, the app features a consistent and modern design with a wide range of components for a polished look and feel.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+-   **Fast Development with Vite:** The project is built on Vite, a fast development environment that ensures quick and efficient development, making the app responsive and snappy.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Getting Started
+
+Follow these steps to get the Markdown App up and running on your local machine:
+
+1. **Clone the Repository:**
+
+    ```bash
+    git clone https://github.com/Zaccal/NoteMaker.git
+    cd markdown-app
+    ```
+
+2. **Install Dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+3. **Run the Development Server:**
+
+    ```bash
+    npm run dev
+    ```
+
+4. **Open in Browser:**
+   Visit `http://localhost:3000` in your browser to see the Markdown App in action.
+
+## Contribution
+
+Contributions are welcome! Whether you find a bug, have a feature request, or want to contribute code, feel free to open an issue or submit a pull request. Check out our [contribution guidelines](CONTRIBUTING.md) for more details.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+Special thanks to the React, Vite, Tailwind CSS, and Material-UI communities for their fantastic tools and libraries that made this project possible.
+
+Happy Markdown editing! 🚀

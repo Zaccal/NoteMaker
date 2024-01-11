@@ -90,7 +90,7 @@ const NoteCard = ({
                     </div>
                 }
                 secondary={
-                    content ? (
+                    content && type === 'Deleted' ? (
                         <span className="text-lg pt-3 text-gray-300">
                             {content}
                         </span>

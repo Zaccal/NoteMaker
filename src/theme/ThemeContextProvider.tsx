@@ -20,6 +20,7 @@ interface IThemeContextProvider {
 
 const ThemeContextProvider = ({ children }: IThemeContextProvider) => {
     const value = useColorTheme()
+
     return (
         <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
     )

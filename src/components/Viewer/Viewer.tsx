@@ -73,7 +73,7 @@ const Viewer = ({ children }: IViewer) => {
                                     remarkGfm,
                                     rehypeRaw,
                                 ]}
-                                className="bg-backgroundPrimary px-8 py-4 markdown h-full"
+                                className="bg-backgroundPrimary px-8 py-4 markdown h-full max-h-[94vh] overflow-y-scroll"
                             >
                                 {markdownValue || '### Nothing wrote yet'}
                             </Markdown>
